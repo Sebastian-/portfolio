@@ -6,7 +6,7 @@ class Project(models.Model):
     description = models.TextField()
     repo_url = models.URLField('Repository URL', blank=True)
     site_url = models.URLField('Site URL', max_length=2000, blank=True)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='projects')
     technologies = models.ManyToManyField(
         'Technology', related_name='projects')
 
