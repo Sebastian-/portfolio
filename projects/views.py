@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import generic
+
+from .models import Project
 
 
-def index(request):
-    return HttpResponse("<h1>project page</h1>")
+class IndexView(generic.ListView):
+    template_name = 'projects/index.html'
+    context_object_name = 'projects'
+
+    def get_queryset(self):
+        return Project.objects.all()
